@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+    const { login } = useAuthContext();
+    const navigate = useNavigate()
+
+    const onSubmit = async (data) => {
+        try {
+            await login(data.email, data.password);
+            navigate('/dashboard');
+            toast.success('Login successful! Welcome back!');
+        } catch (error) {
+            toast.error(error.message || 'Login failed. Please try again.')
+        }
+    }
+
     return (
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label htmlFor="login-email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address
@@ -12,7 +29,12 @@ export default function LoginForm() {
                     id="login-email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
                     placeholder="you@example.com"
+                    {...register('email', { required: 'Email is required', pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address'
+                      } })}
                 />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -24,27 +46,17 @@ export default function LoginForm() {
                     id="login-password"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
                     placeholder="••••••••"
+                    {...register('password', { required: 'Password is required' })}
                 />
-            </div>
-
-            <div className="flex items-center justify-between">
-                <label className="flex items-center">
-                    <input
-                        type="checkbox"
-                        className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                    />
-                    <span className="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-                <a href="#" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-                    Forgot password?
-                </a>
+                {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
             </div>
 
             <button
                 type="submit"
-                className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+                className="cursor-pointer w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                <Link to="/dashboard">Sign In</Link>
+                {isSubmitting ? 'Signing In...' : 'Sign In'}
             </button>
 
 
