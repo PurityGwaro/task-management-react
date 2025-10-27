@@ -1,6 +1,6 @@
 import { useState } from "react";
 import LoginForm from "../components/tickets/LoginForm";
-import SignupForm from "./SignupForm";
+import SignupForm from "../components/tickets/SignupForm";
 import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 
