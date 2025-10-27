@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/index.css'
 import Dashboard from './pages/Dashboard'
 import SignupForm from './pages/SignupForm';
-import LoginForm from './pages/Login';
+import LoginForm from './components/tickets/LoginForm.jsx';
 import LandingPage from './pages/LandingPage';
 import AuthScreen from './pages/AuthScreen.jsx';
 import Tickets from './pages/Tickets';
