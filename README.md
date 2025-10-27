@@ -1,16 +1,73 @@
-# React + Vite
+# Tickify - Ticket Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive ticket management web application built with React.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** - UI framework
+- **React Router** - Navigation and routing
+- **React Hook Form** - Form validation
+- **React Context API** - State management
+- **Tailwind CSS** - Styling
+- **React Toastify** - Toast notifications
+- **Vite** - Build tool
 
-## React Compiler
+## Setup & Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
 
-## Expanding the ESLint configuration
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+npm run build
+```
+
+## Test Credentials
+
+Use any email and password to create an account. Authentication is simulated using localStorage.
+
+## Features
+
+- **Landing Page** - Hero section with wavy SVG background and decorative elements
+- **Authentication** - Login/Signup with form validation
+- **Dashboard** - Overview statistics (Total, Open, In Progress, Closed tickets)
+- **Ticket Management** - Full CRUD operations with real-time validation
+- **Responsive Design** - Mobile, tablet, and desktop optimized
+- **Protected Routes** - Session-based authorization
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable UI components
+├── context/          # React Context (Auth, Tickets)
+├── pages/            # Page components
+├── utils/            # Utility functions
+└── App.jsx           # Main app component
+```
+
+## Status Values
+
+- `open` - Green badge
+- `in_progress` - Yellow badge
+- `closed` - Gray badge
+
+## Accessibility
+
+- Semantic HTML elements
+- Keyboard navigation support
+- Sufficient color contrast
+- Focus states on interactive elements
+
+## State & Session Management
+
+**State Management:**
+- `AuthContext` - Manages user authentication state
+- `TicketsContext` - Manages ticket data and CRUD operations
+
+**Session Storage:**
+- Users: `Tickify_users` (localStorage)
+- Current User: `Tickify_current_user` (localStorage)
+- Tickets: `tickets` (localStorage)
+
+Logout clears the session and redirects to the landing page.
