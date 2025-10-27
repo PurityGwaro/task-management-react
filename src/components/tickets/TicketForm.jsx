@@ -68,8 +68,8 @@ export default function TicketForm({ onSubmit, register, errors, isSubmitting, h
                         >
                             <option value="" disabled selected>Select status</option>
                             <option value="open">Open</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="resolved">Resolved</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="closed">closed</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

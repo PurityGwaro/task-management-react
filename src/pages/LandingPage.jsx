@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 
-const Landing = () => {
+const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white overflow-hidden">
@@ -130,7 +130,7 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default LandingPage;
 
 
 

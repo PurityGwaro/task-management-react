@@ -16,7 +16,7 @@ export default function Dashboard() {
         userTickets: [],
         openTickets: [],
         inProgressTickets: [],
-        resolvedTickets: []
+        closedTickets: []
     });
 
     useEffect(() => {
@@ -29,13 +29,13 @@ export default function Dashboard() {
         if (currentUser) {
             const userTickets = getTickets(currentUser);
             const openTickets = getAllTicketsByStatus('open', currentUser.id);
-            const inProgressTickets = getAllTicketsByStatus('in-progress', currentUser.id);
-            const resolvedTickets = getAllTicketsByStatus('resolved', currentUser.id);
+            const inProgressTickets = getAllTicketsByStatus('in_progress', currentUser.id);
+            const closedTickets = getAllTicketsByStatus('closed', currentUser.id);
             setTicketsData({
                 userTickets,
                 openTickets,
                 inProgressTickets,
-                resolvedTickets
+                closedTickets
             });
         }
     }, [currentUser, getTickets]);
@@ -65,7 +65,7 @@ export default function Dashboard() {
                     <Statistic title="Total Tickets" number={ticketsData.userTickets.length} description="All tickets in system" />
                     <Statistic title="Open" number={ticketsData.openTickets.length} description="Awaiting action" />
                     <Statistic title="In Progress" number={ticketsData.inProgressTickets.length} description="Currently being worked on" />
-                    <Statistic title="Resolved" number={ticketsData.resolvedTickets.length} description="Completed tickets" />
+                    <Statistic title="closed" number={ticketsData.closedTickets.length} description="Completed tickets" />
 
                 </section>
 

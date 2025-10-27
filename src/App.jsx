@@ -4,7 +4,7 @@ import './styles/index.css'
 import Dashboard from './pages/Dashboard'
 import SignupForm from './pages/Signup';
 import LoginForm from './pages/Login';
-import Landing from './pages/Landing';
+import LandingPage from './pages/LandingPage';
 import AuthScreen from './pages/AuthScreen';
 import Tickets from './pages/Tickets';
 import NewTicket from './pages/NewTicket';
@@ -21,7 +21,7 @@ function App() {
         <div className='max-w-[1440px] mx-auto font-sans text-gray-800'>
           <Router>
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route path="/" element={<LandingPage />} />
               <Route path="/auth" element={<AuthScreen />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/signup" element={<SignupForm />} />
