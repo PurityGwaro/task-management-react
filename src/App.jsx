@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/index.css'
 import Dashboard from './pages/Dashboard'
 import LandingPage from './pages/LandingPage';
-import AuthScreen from './pages/AuthScreen.jsx';
 import Tickets from './pages/Tickets';
 import NewTicket from './pages/NewTicket';
 import { AuthContextProvider } from './context/AuthContext';
@@ -10,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { TicketsContextProvider } from './context/TicketsContext';
 import Ticket from './pages/Ticket';
+import AuthScreen from './pages/authScreen';
 
 function App() {
   return (
