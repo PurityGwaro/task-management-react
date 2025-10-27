@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/index.css'
 import Dashboard from './pages/Dashboard'
-import SignupForm from './pages/SignupForm';
-import LoginForm from './components/tickets/LoginForm.jsx';
 import LandingPage from './pages/LandingPage';
 import AuthScreen from './pages/AuthScreen.jsx';
 import Tickets from './pages/Tickets';
@@ -22,8 +20,6 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/auth" element={<AuthScreen />} />
-              <Route path="/login" element={<LoginForm />} />
-              <Route path="/signup" element={<SignupForm />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/tickets" element={<Tickets />} />
               <Route path="/tickets/new" element={<NewTicket />} />
