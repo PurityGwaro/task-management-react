@@ -65,7 +65,7 @@ export default function Dashboard() {
                     <Statistic title="Total Tickets" number={ticketsData.userTickets.length} description="All tickets in system" />
                     <Statistic title="Open" number={ticketsData.openTickets.length} description="Awaiting action" />
                     <Statistic title="In Progress" number={ticketsData.inProgressTickets.length} description="Currently being worked on" />
-                    <Statistic title="closed" number={ticketsData.closedTickets.length} description="Completed tickets" />
+                    <Statistic title="Closed" number={ticketsData.closedTickets.length} description="Completed tickets" />
 
                 </section>
 

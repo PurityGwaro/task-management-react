@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import { useAuthContext } from "../context/AuthContext";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useTicketsContext } from "../context/TicketsContext";
 import { useForm } from "react-hook-form";
 import TicketForm from "../components/tickets/TicketForm";
+import { getStatusColor, getPriorityColor, formatStatus } from "../utils";
 
 export default function Ticket() {
     const navigate = useNavigate();
@@ -92,24 +93,6 @@ export default function Ticket() {
         );
     }
 
-    const getStatusColor = (status) => {
-        switch (status?.toLowerCase()) {
-            case 'open': return 'bg-blue-100 text-blue-800';
-            case 'in_progress': return 'bg-yellow-100 text-yellow-800';
-            case 'closed': return 'bg-green-100 text-green-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
-    };
-
-    const getPriorityColor = (priority) => {
-        switch (priority?.toLowerCase()) {
-            case 'high': return 'bg-red-100 text-red-800';
-            case 'medium': return 'bg-orange-100 text-orange-800';
-            case 'low': return 'bg-green-100 text-green-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
-    };
-
     return (
         <div className="h-screen bg-gray-50 flex flex-col">
             <Header currentUser={currentUser} handleLogout={handleLogout} />
@@ -118,12 +101,12 @@ export default function Ticket() {
                 <div className="max-w-5xl mx-auto">
                     <button 
                         onClick={() => navigate('/tickets')} 
-                        className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-4 sm:mb-6 transition-colors"
+                        className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-4 sm:mb-6 transition-colors cursor-pointer hover:underline"
                     >
                         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
-                        <span className="font-medium text-sm sm:text-base">Back to Tickets</span>
+                        <span className="font-medium text-sm sm:text-base hover:text-blue-600">Back to Tickets</span>
                     </button>
 
                     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -131,10 +114,10 @@ export default function Ticket() {
                             <h1 className="text-3xl font-bold text-gray-800 mb-4">{ticket.title}</h1>
                             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                                 <span className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium ${getStatusColor(ticket.status)}`}>
-                                    {ticket.status}
+                                    {formatStatus(ticket.status)}
                                 </span>
                                 <span className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium ${getPriorityColor(ticket.priority)}`}>
-                                    {ticket.priority} priority
+                                    {ticket.priority}
                                 </span>
                             </div>
                         </div>

@@ -54,7 +54,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6-">
+      <section className="max-w-[1440px] mx-auto px-6-">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             Everything You Need to Manage Tickets

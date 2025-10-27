@@ -1,29 +1,8 @@
 import { Link } from "react-router-dom";
+import { truncateText, getStatusColor, getPriorityColor, formatStatus } from "../../utils";
 
 export default function TicketCard({ticket}) {
-    const truncateText = (text, maxLength = 100) => {
-        if (text.length <= maxLength) return text;
-        return text.substring(0, maxLength) + '...';
-    };
-
-    const getStatusColor = (status) => {
-        switch(status?.toLowerCase()) {
-            case 'open': return 'bg-blue-100 text-blue-800';
-            case 'in_progress': return 'bg-yellow-100 text-yellow-800';
-            case 'closed': return 'bg-green-100 text-green-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
-    };
-
-    const getPriorityColor = (priority) => {
-        switch(priority?.toLowerCase()) {
-            case 'high': return 'bg-red-100 text-red-800';
-            case 'medium': return 'bg-orange-100 text-orange-800';
-            case 'low': return 'bg-green-100 text-green-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
-    };
-
+   
     return (
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-4 sm:p-5 md:p-6 flex flex-col gap-3 sm:gap-4">
             <div className="flex items-start justify-between gap-2 sm:gap-3">
@@ -44,7 +23,7 @@ export default function TicketCard({ticket}) {
 
             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                 <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium ${getStatusColor(ticket.status)}`}>
-                    {ticket.status}
+                    {formatStatus(ticket.status)}
                 </span>
                 <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium ${getPriorityColor(ticket.priority)}`}>
                     {ticket.priority}
