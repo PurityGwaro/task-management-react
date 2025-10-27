@@ -22,7 +22,7 @@ export default function LoginForm() {
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label htmlFor="login-email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
+                    Email Address <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="email"
@@ -39,7 +39,7 @@ export default function LoginForm() {
 
             <div>
                 <label htmlFor="login-password" className="block text-sm font-medium text-gray-700 mb-2">
-                    Password
+                    Password <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="password"

@@ -24,21 +24,21 @@ export default function SignupForm() {
     <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label htmlFor="signup-name" className="block text-sm font-medium text-gray-700 mb-2">
-          Full Name
+          Full Name <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
           id="signup-name"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
           placeholder="John Doe"
-          {...register('name', { required: { required: 'Name is required' } })}
+          {...register('name', { required: 'Name is required' })}
         />
         {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
       </div>
 
       <div>
         <label htmlFor="signup-email" className="block text-sm font-medium text-gray-700 mb-2">
-          Email Address
+          Email Address <span className="text-red-500">*</span>
         </label>
         <input
           type="email"
@@ -57,28 +57,28 @@ export default function SignupForm() {
 
       <div>
         <label htmlFor="signup-password" className="block text-sm font-medium text-gray-700 mb-2">
-          Password
+          Password <span className="text-red-500">*</span>
         </label>
         <input
           type="password"
           id="signup-password"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
           placeholder="••••••••"
-          {...register('password', { required: { required: 'Password is required' } })}
+          {...register('password', { required: 'Password is required' })}
         />
         {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
       </div>
 
       <div>
         <label htmlFor="signup-confirm" className="block text-sm font-medium text-gray-700 mb-2">
-          Confirm Password
+          Confirm Password <span className="text-red-500">*</span>
         </label>
         <input
           type="password"
           id="signup-confirm"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
           placeholder="••••••••"
-          {...register('confirmPassword', { required: { required: 'Confirm Password is required' }, validate: (value) => value === password || 'Passwords do not match' })}
+          {...register('confirmPassword', { required: 'Confirm Password is required', validate: (value) => value === password || 'Passwords do not match' })}
         />
         {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>}
       </div>

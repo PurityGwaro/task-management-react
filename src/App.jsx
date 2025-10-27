@@ -11,35 +11,40 @@ import NewTicket from './pages/NewTicket';
 import { AuthContextProvider } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TicketsContextProvider } from './context/TicketsContext';
+import Ticket from './pages/Ticket';
 
 function App() {
   return (
     <AuthContextProvider>
-      <div className='max-w-[1440px] mx-auto font-sans text-gray-800'>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/auth" element={<AuthScreen />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/signup" element={<SignupForm />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/tickets" element={<Tickets />} />
-            <Route path="/new-ticket" element={<NewTicket />} />
-          </Routes>
-        </Router>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
+      <TicketsContextProvider>
+        <div className='max-w-[1440px] mx-auto font-sans text-gray-800'>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/auth" element={<AuthScreen />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/signup" element={<SignupForm />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/tickets" element={<Tickets />} />
+              <Route path="/tickets/new" element={<NewTicket />} />
+              <Route path="/ticket/:id" element={<Ticket />} />
+            </Routes>
+          </Router>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </div>
+      </TicketsContextProvider>
     </AuthContextProvider>
   )
 }
