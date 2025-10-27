@@ -4,7 +4,7 @@ import Dashboard from './pages/Dashboard'
 import SignupForm from './pages/SignupForm';
 import LoginForm from './pages/Login';
 import LandingPage from './pages/LandingPage';
-import AuthScreen from './pages/AuthScreen';
+import AuthScreen from './pages/AuthScreen.jsx';
 import Tickets from './pages/Tickets';
 import NewTicket from './pages/NewTicket';
 import { AuthContextProvider } from './context/AuthContext';
