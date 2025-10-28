@@ -10,7 +10,7 @@ const LandingPage = () => {
         <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-pink-400 bg-opacity-15 rounded-full blur-xl"></div>
         <div className="absolute top-1/2 right-10 w-24 h-24 bg-blue-300 bg-opacity-20 rounded-full blur-lg"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 py-20 md:py-32">
           <div className="flex flex-col items-center justify-center text-center">
           
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
